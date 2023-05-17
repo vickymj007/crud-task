@@ -15,6 +15,7 @@
   height: 50px;
   background-color: #7189FF;
 }
+
 .navbar div a {
   text-decoration: none;
   color: #000;
@@ -25,6 +26,12 @@
   background-color: #624CAB;
   color: #fff;
 }
+
+.nav-icons{
+  font-size: 1.5rem;
+  display: none;
+}
+
 .home-page > h2 {
   text-align: center;
 }
@@ -58,6 +65,10 @@ table > tbody > tr{
 table > tbody > tr:nth-child(even){
   background-color: #d3daff;
 }
+table > tbody > tr:last-child{
+  border-bottom: 2px solid #624CAB;
+}
+
 button {
   outline: none;
   border: none;
@@ -141,4 +152,56 @@ button {
   color: #fff;
   border-radius: 20px;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+}
+.navigation-links{
+  transition: all .3s;
+}
+@media screen and (max-width:630px){
+  table{
+    font-size: 0.7rem;
+  }
+  table td, table th {
+    padding: 5px 10px;
+  }
+  table button{
+    width: 40px;
+    padding: 5px 5px;
+    font-size: 0.5rem;
+  }
+  .nav-icons{
+    display: block;
+  }
+  .navbar h1 {
+    font-size: 1rem;
+  }
+  .contact-page {
+    width: 80%;
+    font-size: 0.8rem;
+  }
+  .home-page {
+    padding: 5px;
+  }
+  .home-page h2 {
+    font-size: 0.8rem;
+  }
+  .navigation-links{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    background-color: #7189FF;
+    width: 100%;
+    left: 0;
+    top: -160px;
+    border-bottom: 2px solid #464646;
+  }
+  .navigation-links.active {
+    background-color: #7189FF;
+    top: 60px;
+  }
+  .navbar{
+    justify-content: space-between;
+  }
+  .add-employee-page{
+    margin: 50px 10px;
+  }
 }

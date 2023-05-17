@@ -13,20 +13,19 @@ import { Contact } from './Components/Contact';
 
 function App() {
   const [data, setData] = useState(employeeData)
-  const [editId, setEditId] = useState("")
   
   return (
     <BrowserRouter>
       <Navbar/>
       <Routes>
           <Route path='/' 
-          element={<Home data={data} setData={setData} editId={editId} setEditId={setEditId}/>}
+          element={<Home data={data} setData={setData}/>}
           />
           <Route path='/add-employee'
            element={<AddEmployee data={data} setData={setData}/>}
            />
-          <Route path='/edit-employee' 
-          element={<EditEmployee data={data} setData={setData} editId={editId} setEditId={setEditId}/>}/>
+          <Route path='/edit-employee/:userId' 
+          element={<EditEmployee data={data} setData={setData}/>}/>
           <Route path='/contact' element={<Contact/>}/>
           <Route path='*' element={<ErrorPage/>}/>
       </Routes>

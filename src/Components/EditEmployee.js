@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react'
 import {useState} from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 
 
-export const EditEmployee = ({data, setData, editId}) => {
+export const EditEmployee = ({data, setData}) => {
+    let {userId} = useParams()
     let [id, setId] = useState("")
     let [name, setName] = useState("")
     let [role, setRole] = useState("")
@@ -11,7 +12,7 @@ export const EditEmployee = ({data, setData, editId}) => {
     let [isValidId, setIsValidId] = useState(true)
     let navigate = useNavigate()
 
-
+    // Function to Validate if User ID is already available or not
     const validateID =(e)=>{
         setIsValidId(true)
         setId(e.target.value)
@@ -19,14 +20,15 @@ export const EditEmployee = ({data, setData, editId}) => {
             if(ele.id === +e.target.value){
                 setIsValidId(false)
             }
-            if(+e.target.value === +editId){
+            if(+e.target.value === userId){
                 setIsValidId(true)
             }
         })
     }
-    
+
+    // Function to get user ID when edit button is cliked
     useEffect(()=>{
-        let employeeData = data.find(emp => emp.id === +editId)
+        let employeeData = data.find(emp => emp.id === userId)
         if(employeeData){
             setId(employeeData.id)
             setName(employeeData.name)
@@ -34,15 +36,15 @@ export const EditEmployee = ({data, setData, editId}) => {
             employeeData.salary = employeeData.salary.replace(/,/g, '')
             setSalary(employeeData.salary)
         }
-        
-    },[editId, data])
+    },[userId, data])
 
+    // Function to Edit Employee details
     const updateEmployee = (e)=>{
         e.preventDefault()
-        let employeeIndex = data.findIndex(emp => emp.id === +editId)
+        let employeeIndex = data.findIndex(emp => emp.id === userId)
         salary = (+salary).toLocaleString('en-IN')
         const updatedEmployee = {
-            id: editId,
+            id: userId,
             name,
             role,
             salary

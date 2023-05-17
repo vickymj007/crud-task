@@ -2,19 +2,19 @@ import React from "react"
 import { useNavigate } from 'react-router-dom'
 
 
-export const Home = ({data, setData, setEditId}) => {
+export const Home = ({data, setData}) => {
 
 const navigate = useNavigate()
 
-
+// Function to Delete Employee
 const handleDelete = key=>{
     let filtered = data.filter((employee)=> employee.id !== key)
     setData(filtered)
 }
 
+// Function to Navigate to Edit Page when edit button is cliked
 const handleEdit = (id)=>{
-    setEditId(id)
-    navigate('/edit-employee')
+    navigate(`/edit-employee/${id}`)
 }
 
 return (

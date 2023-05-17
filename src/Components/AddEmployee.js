@@ -10,16 +10,19 @@ export const AddEmployee = ({data, setData}) => {
     let navigate = useNavigate()
     let [isValidId, setIsValidId] = useState(true)
 
+
+    // Function to Validate if User ID is already Available or Not
     const validateID =(e)=>{
         setIsValidId(true)
         setId(e.target.value)
         data.forEach(ele=>{
-            if(ele.id === +e.target.value){
+            if(ele.id === e.target.value){
                 setIsValidId(false)
             }
         })
     }
 
+    // Function to Add new employee 
     const handleAddEmployee = (e)=>{
         e.preventDefault()
         if(!id || !name || !role || !salary || !isValidId) return
